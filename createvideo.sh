@@ -21,7 +21,8 @@ pwd
 
 ffmpeg -r 10 -pattern_type glob -i 'ts_frontdoor_*.jpg' -c:v libx264 -pix_fmt yuv420p -profile:v high -level 4.2 -crf 25 $VIDEO/frontdoor_$DATE.mp4
 ffmpeg -r 10 -pattern_type glob -i 'ts_frontwindow_*.jpg' -c:v libx264 -pix_fmt yuv420p -profile:v high -level 4.2 -crf 25 $VIDEO/frontwindow_$DATE.mp4  
+ffmpeg -r 10 -pattern_type glob -i 'ts_garage_*.jpg' -c:v libx264 -pix_fmt yuv420p -profile:v high -level 4.2 -crf 25 $VIDEO/garage_$DATE.mp4  
 
 
-echo "$(date): createvideo executed" >> createvideo.log
+echo "$(date): createvideo executed" >> /home/camera/log/createvideo.log
 # ffmpeg -i frontwindow_20160804.mov -c:v libx264 -pix_fmt yuv420p -profile:v high -level 4.2 -crf 25 frontwindow_20160804.mp4
