@@ -1,6 +1,7 @@
 #!/bin/bash
 PIX_HOME=/home/camera/pics
 VIDEO=/home/camera/video
+SYNC=/home/camera/sync
 
 if [ $# -eq 0 ] 
 then
@@ -22,6 +23,11 @@ pwd
 ffmpeg -r 10 -pattern_type glob -i 'ts_frontdoor_*.jpg' -c:v libx264 -pix_fmt yuv420p -profile:v high -level 4.2 -crf 25 $VIDEO/frontdoor_$DATE.mp4
 ffmpeg -r 10 -pattern_type glob -i 'ts_frontwindow_*.jpg' -c:v libx264 -pix_fmt yuv420p -profile:v high -level 4.2 -crf 25 $VIDEO/frontwindow_$DATE.mp4  
 ffmpeg -r 10 -pattern_type glob -i 'ts_garage_*.jpg' -c:v libx264 -pix_fmt yuv420p -profile:v high -level 4.2 -crf 25 $VIDEO/garage_$DATE.mp4  
+
+cp $VIDEO/frontdoor_$DATE.mp4 $SYNC
+cp $VIDEO/frontwindow_$DATE.mp4 $SYNC
+cp $VIDEO/garage_$DATE.mp4 $SYNC
+
 
 
 echo "$(date): createvideo executed" >> /home/camera/log/createvideo.log
